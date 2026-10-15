@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Number Radar</title>
     <script defer src="./app.js"></script>
 </head>
+
 <body>
-    
+
+    <div class="container">
+        <!-- Choose the mode for the game -->
+        <div id="'mode-selection">
+            <p>Choose your game mode</p>
+            <button onclick="selectMode('PvC')">Player vs Computer</button>
+            <button onclick="selectMode('PvP')">Player vs Player </button>
+        </div>
+
+        <button id="restart-btn">
+
+        <!-- Game area will be hidden and it will apear after choosing the game mode -->
+        <div id="game-area" class="hidden">
+            <h3 id="game-title">Number Radar</h3>
+
+            <!-- Player 1 area  -->
+
+            <div id="p1-input area" class="hidden">
+                <p>Player 1: Unter Secret Number (1-100)</p>
+
+                <input type="password" id="secret-number" placeholder="Secret Number">
+                <br>
+                <button onclick="saveSecretNumber()">Lock Number</button>
+            </div>
+
+            <!-- Guessing area  -->
+
+            <div id="guess-area" class="hidden">
+                <p id="turn-instruction">Guess the number (between 1 and 100):</p>
+                <input type="number" id="user-guess" min="1" max="100" placeholder="Your Guess">
+                <br>
+                <button onclick="checkGuess()">Check Guess</button>
+            </div>
+
+           <!-- Message --> 
+
+            <p class="message" id="game-message"></p>
+            <button onclick="resetGame()">Restart Game</button>
+        </div>
+    </div>
+
 </body>
+
 </html>
