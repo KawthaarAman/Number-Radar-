@@ -13,3 +13,24 @@ body {
     background: linear-gradient(135deg, #eee7ff, #d9c8f5);
     color: #3b2e5a;
 }
+
+.container {
+    width: 90%;
+    max-width: 450px;
+    padding: 35px 25px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(59, 46, 90, 0.15);
+    text-align: center;
+}
+
+h3 {
+    font-size: 28px;
+    margin-top: 0;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.6;
+}
+
