@@ -10,6 +10,7 @@ const MAX_ATTEMPTS = 7
 let gameMode = ""
 let secretNumber = 0
 let attempts = 0
+let isPaused = false
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -27,6 +28,8 @@ const modeButtons = document.querySelectorAll("#mode-selection button")
 const lockButton = document.querySelector("#p1-input-area button")
 const checkButton = document.querySelector("#guess-area button")
 const restartButton = document.querySelector("#restart-btn")
+const pauseButton = document.querySelector("#pause-btn")
+const resumeButton = document.querySelector("#resume-btn")
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -84,6 +87,11 @@ function saveSecretNumber() {
 }
 
 function checkGuess() {
+
+    if (isPaused) {
+        return
+    }
+
     const guess = Number(guessInput.value)
 
     if (
@@ -132,10 +140,44 @@ function checkGuess() {
 
 }
 
+function pauseGame() {
+    if (isPaused || guessArea.classList.contains("hidden")) {
+        return
+    }
+
+    isPaused = true
+
+    checkButton.disabled = true
+    guessInput.disabled = true
+
+    pauseButton.classList.add("hidden")
+    resumeButton.classList.remove("hidden")
+
+    message.textContent = "Game Paused"
+}
+
+function resumeGame() {
+    if (!isPaused) {
+        return
+    }
+
+    isPaused = false
+
+    checkButton.disabled = false
+    guessInput.disabled = false
+
+    pauseButton.classList.remove("hidden")
+    resumeButton.classList.add("hidden")
+
+    message.textContent = "Game Resumed"
+    guessInput.focus()
+}
+
 function resetGame() {
     gameMode = ""
     secretNumber = 0
     attempts = 0
+    isPaused = false
 
     modeSelection.classList.remove("hidden")
     gameArea.classList.add("hidden")
@@ -145,6 +187,12 @@ function resetGame() {
     secretInput.value = ""
     guessInput.value = ""
     message.textContent = ""
+
+    checkButton.disabled = false
+    guessInput.disabled = false
+
+    pauseButton.classList.remove("hidden")
+    resumeButton.classList.add("hidden")
 
 }
 
@@ -163,3 +211,7 @@ lockButton.addEventListener("click", saveSecretNumber)
 checkButton.addEventListener('click', checkGuess)
 
 restartButton.addEventListener('click', resetGame)
+
+pauseButton.addEventListener("click", pauseGame)
+
+resumeButton.addEventListener("click", resumeGame)
