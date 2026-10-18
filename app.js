@@ -73,4 +73,11 @@ function resetGame() {
 
 /*----------------------------- Event Listeners -----------------------------*/
 
+modeButtons[0].addEventListener("click", function () {
+    selectMode("PvC");
+});
+
+modeButtons[1].addEventListener("click", function () {
+    selectMode("PvP");
+});
 
