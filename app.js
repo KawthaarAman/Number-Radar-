@@ -83,7 +83,6 @@ function saveSecretNumber() {
     message.textContent = "Player 2, it's your turn!"
 }
 
-
 function checkGuess() {
     const guess = Number(guessInput.value)
 
@@ -164,4 +163,3 @@ lockButton.addEventListener("click", saveSecretNumber)
 checkButton.addEventListener('click', checkGuess)
 
 restartButton.addEventListener('click', resetGame)
-
