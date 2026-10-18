@@ -30,8 +30,6 @@ const restartButton = document.querySelector("#restart-btn")
 
 /*-------------------------------- Functions --------------------------------*/
 
-
-
 function selectMode(mode) {
     gameMode = mode
     attempts = 0
@@ -136,6 +134,18 @@ function checkGuess() {
 }
 
 function resetGame() {
+    gameMode = ""
+    secretNumber = 0
+    attempts = 0
+
+    modeSelection.classList.remove("hidden")
+    gameArea.classList.add("hidden")
+    p1InputArea.classList.add("hidden")
+    guessArea.classList.add("hidden")
+
+    secretInput.value = ""
+    guessInput.value = ""
+    message.textContent = ""
 
 }
 
@@ -152,4 +162,6 @@ modeButtons[1].addEventListener("click", function () {
 lockButton.addEventListener("click", saveSecretNumber)
 
 checkButton.addEventListener('click', checkGuess)
+
+restartButton.addEventListener('click', resetGame)
 
