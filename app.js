@@ -87,6 +87,51 @@ function saveSecretNumber() {
 
 
 function checkGuess() {
+    const guess = Number(guessInput.value)
+
+    if (
+        guessInput.value === "" ||
+        !Number.isInteger(guess) ||
+        guess < MIN_NUMBER ||
+        guess > MAX_NUMBER
+    ) {
+        message.textContent = "Enter a valid number between 1 and 100."
+        return
+    }
+
+    attempts++
+
+    if (guess === secretNumber) {
+        if (gameMode === "PvC") {
+            message.textContent =
+                "Correct! You win! Attempts: " + attempts
+        } else {
+            message.textContent =
+                "Correct! Player 2 wins! Attempts: " + attempts
+        }
+
+        guessArea.classList.add("hidden")
+        return
+    }
+
+    if (attempts === MAX_ATTEMPTS) {
+        message.textContent =
+            "Game Over! The correct number was " + secretNumber
+
+        guessArea.classList.add("hidden")
+        return
+    }
+
+    if (guess < secretNumber) {
+        message.textContent =
+            "Too low! Attempts left: " + (MAX_ATTEMPTS - attempts)
+    } else {
+        message.textContent =
+            "Too high! Attempts left: " + (MAX_ATTEMPTS - attempts)
+    }
+
+    guessInput.value = ""
+    guessInput.focus()
 
 }
 
@@ -106,4 +151,5 @@ modeButtons[1].addEventListener("click", function () {
 
 lockButton.addEventListener("click", saveSecretNumber)
 
+checkButton.addEventListener('click', checkGuess)
 
