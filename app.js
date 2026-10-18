@@ -33,35 +33,58 @@ const restartButton = document.querySelector("#restart-btn")
 
 
 function selectMode(mode) {
-    gameMode = mode;
-    attempts = 0;
-    message.textContent = "";
+    gameMode = mode
+    attempts = 0
+    message.textContent = ""
 
-    modeSelection.classList.add("hidden");
-    gameArea.classList.remove("hidden");
+    modeSelection.classList.add("hidden")
+    gameArea.classList.remove("hidden")
 
     if (gameMode === "PvC") {
-        gameTitle.textContent = "Player vs Computer";
-        secretNumber = Math.floor(Math.random() * MAX_NUMBER) + MIN_NUMBER;
+        gameTitle.textContent = "Player vs Computer"
+        secretNumber = Math.floor(Math.random() * MAX_NUMBER) + MIN_NUMBER
 
-        p1InputArea.classList.add("hidden");
-        guessArea.classList.remove("hidden");
+        p1InputArea.classList.add("hidden")
+        guessArea.classList.remove("hidden")
 
-        turnInstruction.textContent = "Guess the number (1-100):";
+        turnInstruction.textContent = "Guess the number (1-100):"
     } else {
-        gameTitle.textContent = "Player vs Player";
+        gameTitle.textContent = "Player vs Player"
 
-        p1InputArea.classList.remove("hidden");
-        guessArea.classList.add("hidden");
+        p1InputArea.classList.remove("hidden")
+        guessArea.classList.add("hidden")
 
-        secretInput.value = "";
-        guessInput.value = "";
+        secretInput.value = ""
+        guessInput.value = ""
     }
 }
 
 function saveSecretNumber() {
+    const number = Number(secretInput.value)
 
+    if (
+        secretInput.value === "" ||
+        !Number.isInteger(number) ||
+        number < MIN_NUMBER ||
+        number > MAX_NUMBER
+    ) {
+        message.textContent = " Enter a valid number between 1 and 100 "
+        return
+    }
+
+    secretNumber = number
+    attempts = 0
+
+    p1InputArea.classList.add("hidden")
+    guessArea.classList.remove("hidden")
+
+    secretInput.value = ""
+    guessInput.value = ""
+
+    turnInstruction.textContent = "Player 2: Guess the number (1-100)"
+    message.textContent = "Player 2, it's your turn!"
 }
+
 
 function checkGuess() {
 
@@ -74,10 +97,13 @@ function resetGame() {
 /*----------------------------- Event Listeners -----------------------------*/
 
 modeButtons[0].addEventListener("click", function () {
-    selectMode("PvC");
-});
+    selectMode("PvC")
+})
 
 modeButtons[1].addEventListener("click", function () {
-    selectMode("PvP");
-});
+    selectMode("PvP")
+})
+
+lockButton.addEventListener("click", saveSecretNumber)
+
 
