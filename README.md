@@ -34,4 +34,10 @@ A simple yet engaging game with two modes. In Player vs Computer mode, the playe
 
 ## Screenshots
 
+![Select game mode screen](image.png)
+
+![Player vs Computer game area](image-1.png)
+
+![Player vs Player game area](image-2.png)
+
 ## Credits
