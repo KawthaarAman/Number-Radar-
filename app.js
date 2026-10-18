@@ -32,6 +32,45 @@ const restartButton = document.querySelector("#restart-btn")
 
 
 
+function selectMode(mode) {
+    gameMode = mode;
+    attempts = 0;
+    message.textContent = "";
+
+    modeSelection.classList.add("hidden");
+    gameArea.classList.remove("hidden");
+
+    if (gameMode === "PvC") {
+        gameTitle.textContent = "Player vs Computer";
+        secretNumber = Math.floor(Math.random() * MAX_NUMBER) + MIN_NUMBER;
+
+        p1InputArea.classList.add("hidden");
+        guessArea.classList.remove("hidden");
+
+        turnInstruction.textContent = "Guess the number (1-100):";
+    } else {
+        gameTitle.textContent = "Player vs Player";
+
+        p1InputArea.classList.remove("hidden");
+        guessArea.classList.add("hidden");
+
+        secretInput.value = "";
+        guessInput.value = "";
+    }
+}
+
+function saveSecretNumber() {
+
+}
+
+function checkGuess() {
+
+}
+
+function resetGame() {
+
+}
+
 /*----------------------------- Event Listeners -----------------------------*/
 
 
