@@ -35,6 +35,12 @@ const pauseButton = document.querySelector("#pause-btn")
 const resumeButton = document.querySelector("#resume-btn")
 const themeToggle = document.querySelector("#theme-toggle")
 
+/*----------------------------- Sound Effects -----------------------------*/
+
+const winSound = new Audio("./sounds/clap.wav")
+const wrongSound = new Audio("./sounds/wrong.wav")
+const gameOverSound = new Audio("./sounds/game-over.wav")
+
 /*-------------------------------- Functions --------------------------------*/
 
 function selectMode(mode) {
@@ -120,6 +126,9 @@ function checkGuess() {
                 "Correct! Player 2 wins! Attempts: " + attempts
         }
 
+        winSound.currentTime = 0
+        winSound.play()
+
         updateHighScore()
 
         guessArea.classList.add("hidden")
@@ -129,6 +138,9 @@ function checkGuess() {
     if (attempts === MAX_ATTEMPTS) {
         message.textContent =
             "Game Over! The correct number was " + secretNumber
+
+        gameOverSound.currentTime = 0
+        gameOverSound.play()
 
         guessArea.classList.add("hidden")
         return
@@ -141,6 +153,9 @@ function checkGuess() {
         message.textContent =
             "Too high! Attempts left: " + (MAX_ATTEMPTS - attempts)
     }
+
+    wrongSound.currentTime = 0
+    wrongSound.play()
 
     guessInput.value = ""
     guessInput.focus()
