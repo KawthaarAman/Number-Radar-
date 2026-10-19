@@ -28,16 +28,14 @@ A simple yet engaging game with two modes. In Player vs Computer mode, the playe
 ## Links
 [GitHub](https://github.com/KawthaarAman/Number-Radar-.git)
 
-## Future Enhancements
-1. High Score
-2. Dark and light mode 
-
 ## Screenshots
 
-![Select game mode screen](./images/image.png)
+![Select game mode screen](./images/image3.png)
 
 ![Player vs Computer game area](./images/image-1.png)
 
 ![Player vs Player game area](./images/image-2.png)
+
+![Dark mode screen](./images/image.png)
 
 ## Credits
