@@ -37,7 +37,7 @@ const themeToggle = document.querySelector("#theme-toggle")
 
 /*----------------------------- Sound Effects -----------------------------*/
 
-const winSound = new Audio("./sounds/clap.wav")
+const winSound = new Audio("./sounds/clap.mp3")
 const wrongSound = new Audio("./sounds/wrong.wav")
 const gameOverSound = new Audio("./sounds/game-over.wav")
 
@@ -148,10 +148,10 @@ function checkGuess() {
 
     if (guess < secretNumber) {
         message.textContent =
-            "Too low! Attempts left: " + (MAX_ATTEMPTS - attempts)
+            "Higher! Attempts left: " + (MAX_ATTEMPTS - attempts)
     } else {
         message.textContent =
-            "Too high! Attempts left: " + (MAX_ATTEMPTS - attempts)
+            "Lower! Attempts left: " + (MAX_ATTEMPTS - attempts)
     }
 
     wrongSound.currentTime = 0
