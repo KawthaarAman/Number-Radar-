@@ -119,3 +119,52 @@ input:focus {
         max-width: 100%;
     }
 }
+
+#theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 2;
+    margin: 0;
+}
+
+body.dark-mode {
+    color: #eee7ff;
+    background: linear-gradient(135deg, #1c1930, #302442);
+}
+
+body.dark-mode::before {
+    opacity: 0.15;
+}
+
+body.dark-mode .container {
+    background: #252136;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode button {
+    background: #8c70b5;
+    color: white;
+}
+
+body.dark-mode button:hover {
+    background: #a18acb;
+}
+
+body.dark-mode input {
+    background: #302a42;
+    color: white;
+    border-color: #6b4f8a;
+}
+
+body.dark-mode input::placeholder {
+    color: #c5bbd8;
+}
+
+body.dark-mode input:focus {
+    border-color: #b49ae0;
+}
+
+body.dark-mode .message {
+    color: #c5a8ff;
+}

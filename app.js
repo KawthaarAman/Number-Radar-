@@ -30,6 +30,7 @@ const checkButton = document.querySelector("#guess-area button")
 const restartButton = document.querySelector("#restart-btn")
 const pauseButton = document.querySelector("#pause-btn")
 const resumeButton = document.querySelector("#resume-btn")
+const themeToggle = document.querySelector("#theme-toggle")
 
 /*-------------------------------- Functions --------------------------------*/
 
@@ -215,3 +216,15 @@ restartButton.addEventListener('click', resetGame)
 pauseButton.addEventListener("click", pauseGame)
 
 resumeButton.addEventListener("click", resumeGame)
+
+themeToggle.addEventListener("click", function () {
+
+    document.body.classList.toggle("dark-mode")
+
+    if (document.body.classList.contains("dark-mode")) {
+        themeToggle.textContent = "Light Mode"
+    } else {
+        themeToggle.textContent = "Dark Mode"
+    }
+
+})
