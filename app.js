@@ -11,6 +11,7 @@ let gameMode = ""
 let secretNumber = 0
 let attempts = 0
 let isPaused = false
+let highScore = Number(localStorage.getItem("numberRadarHighScore")) || 0
 
 /*------------------------ Cached Element References ------------------------*/
 
@@ -23,6 +24,8 @@ const guessInput = document.querySelector("#user-guess")
 const message = document.querySelector("#game-message")
 const turnInstruction = document.querySelector("#turn-instruction")
 const gameTitle = document.querySelector("#game-title")
+const highScoreElement = document.querySelector("#high-score")
+const currentScoreElement = document.querySelector("#current-score")
 
 const modeButtons = document.querySelectorAll("#mode-selection button")
 const lockButton = document.querySelector("#p1-input-area button")
@@ -38,6 +41,7 @@ function selectMode(mode) {
     gameMode = mode
     attempts = 0
     message.textContent = ""
+    currentScoreElement.textContent = ""
 
     modeSelection.classList.add("hidden")
     gameArea.classList.remove("hidden")
@@ -115,6 +119,8 @@ function checkGuess() {
             message.textContent =
                 "Correct! Player 2 wins! Attempts: " + attempts
         }
+
+        updateHighScore()
 
         guessArea.classList.add("hidden")
         return
@@ -196,6 +202,22 @@ function resetGame() {
     resumeButton.classList.add("hidden")
 
 }
+
+function updateHighScore() {
+    const score = (MAX_ATTEMPTS - attempts + 1) * 100
+
+    currentScoreElement.textContent = "Your Score: " + score
+
+    if (score > highScore) {
+        highScore = score
+
+        localStorage.setItem("numberRadarHighScore", highScore)
+
+        highScoreElement.textContent = "High Score: " + highScore
+    }
+}
+
+highScoreElement.textContent = "High Score: " + highScore
 
 /*----------------------------- Event Listeners -----------------------------*/
 
