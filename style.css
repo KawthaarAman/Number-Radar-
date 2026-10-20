@@ -27,7 +27,7 @@ body::before {
     background-position: center;
     background-size: cover;
     opacity: 0.4;
-    animation: moveNumbers 10s ease-in-out infinite;
+    animation: moveNumbers 6s ease-in-out infinite;
     z-index: 0;
 }
 
@@ -104,6 +104,10 @@ input:focus {
     font-weight: bold;
     color: #6b4f8a;
     overflow-wrap: anywhere;
+}
+
+#game-message {
+    white-space: pre-line;
 }
 
 .hidden {

@@ -59,7 +59,7 @@ function selectMode(mode) {
         p1InputArea.classList.add("hidden")
         guessArea.classList.remove("hidden")
 
-        turnInstruction.textContent = "Guess the number (1-100):"
+        turnInstruction.textContent = "Guess the number (1-100) :"
     } else {
         gameTitle.textContent = "Player vs Player"
 
@@ -93,7 +93,7 @@ function saveSecretNumber() {
     secretInput.value = ""
     guessInput.value = ""
 
-    turnInstruction.textContent = "Player 2: Guess the number (1-100)"
+    turnInstruction.textContent = "Player 2 : Guess the number (1-100)"
     message.textContent = "Player 2, it's your turn!"
 }
 
@@ -111,7 +111,7 @@ function checkGuess() {
         guess < MIN_NUMBER ||
         guess > MAX_NUMBER
     ) {
-        message.textContent = "Enter a valid number between 1 and 100."
+        message.textContent = "Enter a valid number between 1 and 100"
         return
     }
 
@@ -120,10 +120,10 @@ function checkGuess() {
     if (guess === secretNumber) {
         if (gameMode === "PvC") {
             message.textContent =
-                "Correct! You win! Attempts: " + attempts
+                "Correct! You win!\nAttempts : " + attempts
         } else {
             message.textContent =
-                "Correct! Player 2 wins! Attempts: " + attempts
+                "Correct! Player 2 wins!\nAttempts : " + attempts
         }
 
         winSound.currentTime = 0
@@ -148,10 +148,10 @@ function checkGuess() {
 
     if (guess < secretNumber) {
         message.textContent =
-            "Higher! Attempts left: " + (MAX_ATTEMPTS - attempts)
+            "Higher!\nAttempts left : " + (MAX_ATTEMPTS - attempts)
     } else {
         message.textContent =
-            "Lower! Attempts left: " + (MAX_ATTEMPTS - attempts)
+            "Lower!\nAttempts left : " + (MAX_ATTEMPTS - attempts)
     }
 
     wrongSound.currentTime = 0
@@ -221,18 +221,18 @@ function resetGame() {
 function updateHighScore() {
     const score = (MAX_ATTEMPTS - attempts + 1) * 100
 
-    currentScoreElement.textContent = "Your Score: " + score
+    currentScoreElement.textContent = "Your Score : " + score
 
     if (score > highScore) {
         highScore = score
 
         localStorage.setItem("numberRadarHighScore", highScore)
 
-        highScoreElement.textContent = "High Score: " + highScore
+        highScoreElement.textContent = "High Score : " + highScore
     }
 }
 
-highScoreElement.textContent = "High Score: " + highScore
+highScoreElement.textContent = "High Score : " + highScore
 
 /*----------------------------- Event Listeners -----------------------------*/
 
