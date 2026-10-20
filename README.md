@@ -38,4 +38,5 @@ A simple yet engaging game with two modes. In Player vs Computer mode, the playe
 
 ![Dark mode screen](./images/image.png)
 
-## Credits
+## Future Enhancements
+leaderboard
